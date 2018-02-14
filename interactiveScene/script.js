@@ -1,33 +1,20 @@
+let tom;
 
+function preload() {
+  tom = loadImage('Thomas.jpg');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
 }
 
 function draw() {
+  image(tom, 0, 0);
 
 }
 
 
 
-function mousePressed() {
-  fill(random(255), random(255), random(255));
-  noStroke();
-  if (mouseButton === LEFT) {
-    rect(mouseX, mouseY, random(100), random(100));
-  }
-
-  if (mouseButton === RIGHT) {
-    ellipse(mouseX, mouseY, random(0, 100));
-  }
-}
-
-
-function keyPressed() {
-  if (key === "w" || key === "W") {
-    background(255, 255, 255);
-  }
-  if (key === "b" || key === "B") {
-    background(0, 0, 0);
-  }
+function
 }
