@@ -1,9 +1,9 @@
-let hungryTommy;
-let tomSnack;
-let tommySnackX, tommySnackY;
-let snackCount;
-let tommyTrue = false;
-
+let hungryTommy; //the cursor image of tom cruise
+let tomSnack; // the random image of money
+let snackCoords = []; //the list used to store the location of the tomsnack for looping
+let snackGenerate = true;
+let xCoordPullCode = 0;
+let yCoordPullCode = 1;
 
 function preload(){
   hungryTommy = loadImage("images/hungryTommy.png");
@@ -13,8 +13,6 @@ function preload(){
 
 function setup(){
   createCanvas(windowWidth,windowHeight);
-  background(255);
-
 }
 
 function draw(){
@@ -23,19 +21,16 @@ function draw(){
   let imgRangeX = mouseX -100;
   let imgRangeY = mouseY -100;
 
-  //for each item in []
+  background(255);
 
   image(hungryTommy, mouseX - 100, mouseY - 100, 200, 200);
-  if (tommyTrue === true){
-    mouseClicked();
-  }
-
-  // if (mouseClicked() && tommyTrue)
+  image(tomSnack, snackCoords[xCoordPullCode], snackCoords[yCoordPullCode], 200, 200);
 
 }
-function mouseClicked(){
-  tommyTrue = !tommyTrue;
-  tommySnackX = random(width);
-  tommySnackY = random(height);
-  image(tomSnack, tommySnackX, tommySnackY, 50, 50);
+function mouseClicked() {
+  snackCoords.push(random(200, width - 200));
+  snackCoords.push(random(200, height - 200));
+  xCoordPullCode = xCoordPullCode + 1;
+  yCoordPullCode = yCoordPullCode + 1;
+
 }
