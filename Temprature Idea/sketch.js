@@ -5,50 +5,43 @@ let red = 50;
 let blue = 50;
 let green = 50;
 
-
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
   input = createInput(" ");
-  input.position(windowWidth/2 - 100, 50);
+  input.position(windowWidth / 2 - 100, 50);
   button = createButton("What's The Temprature???");
-  button.position(windowWidth/2 - 100, 100);
-  button.mousePressed(tempUpdate);
+  button.position(windowWidth / 2 - 100, 100);
 }
 
 function draw() {
-  background(red,blue,green);
+  background(red, green, blue);
+  let tempr = input.value();
+  if (tempr > 0) {
+    state = 1;
+
+  }
+  if (tempr < 0) {
+    state = 2;
+
+  }
+  button.mousePressed(reColour(tempr));
 }
 
+function reColour(tempr){
+  if (state === 1){
+    red = red + tempr;
+    blue = 50;
+  }
+  if (red > 250){
+    red = 250;
+  }
+  if (state === 2){
+    blue = -1 * (blue + tempr);
+    red = 50;
+  }
+  if (blue > 250){
+    blue = 250;
+  }
 
-
-function tempUpdate() {
-  let temp = input.value();
-
-
-  if (temp > 0 && temp < 10){
-    state = 1;
-  }
-  if (temp > 10 && temp < 20){
-    state = 2;
-  }
-  if (temp > 20 && temp < 30){
-    state = 3;
-  }
-  if (temp < 0 && temp > -10){
-    state = 4;
-  }
-  if (temp < -10 && temp > -20){
-    state = 5;
-  }
-  if (temp < -20 && temp > -30){
-    state = 6;
-  }
-  if (temp < -30){
-    state = 7;
-  }
-  if (temp > 30){
-    state = 8;
-  }
 }
